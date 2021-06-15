@@ -19,6 +19,7 @@ function ProfilePage({ navigation }) {
   const [name, setName] = useState("Bob");
   const [number, setNumber] = useState("9111 1111");
   const [email, setEmail] = useState("bob123@gmail.com");
+  const [allergies, setAllergies] = useState([]);
 
   const [clinic, setClinic] = useState("Clinic A");
   const [slot, setSlot] = useState("15 June 2021, 5:30PM");
@@ -37,6 +38,7 @@ function ProfilePage({ navigation }) {
         <Text style={[styles.profileCardText, {fontWeight: "bold"}]}>Hello, {name}!</Text>
         <Text style={styles.profileCardText}>Contact Number: {number}</Text>
         <Text style={styles.profileCardText}>Email: {email}</Text>
+        <Text style={styles.profileCardText}>Allergies: {allergies}</Text>
         <TouchableOpacity
           style={[styles.button, styles.buttonPW]}
           onPress={() => { navigation.navigate("Settings"); }}>
