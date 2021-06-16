@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     //backgroundColor: '#d13056',
-    backgroundColor: '#7844c2',
+    backgroundColor: '#1267a3',
   },
   // profile card
   profileCard: {
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     width: 250,
     marginTop: 20,
     //backgroundColor: "#d6223a",
-    backgroundColor: "#41009c",
+    backgroundColor: "#054775",
     marginLeft: 30,
   },
 });
