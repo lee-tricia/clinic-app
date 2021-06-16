@@ -103,7 +103,7 @@ export default function loginScreen({ navigation, route }) {
           </View>
 
           <TouchableOpacity onPress={() => login() } style={styles.logInButton}>
-            <Text style={{color: "white", fontWeight:"bold"}}>Log in</Text>
+            <Text style={{color: "white", fontWeight:"bold"}}>Log In</Text>
           </TouchableOpacity>
 
           <Text style={{ marginTop: 30,}}> Do not have an account? </Text>
