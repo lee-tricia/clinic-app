@@ -8,14 +8,21 @@ export default function signupPatient({ navigation, route }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const [contactNum, setContactNum] = useState("")
+  const [contactNum, setContactNum] = useState("");
+  const [allergies, setAllergies] = useState([]);
 
   function login() {
     navigation.navigate("LoginStack");
   }
 
   function signup() {
-    navigation.navigate("LoginStack");
+    if (email === "" || password === "" || password2 === "" || contactNum === "") {
+      alert('Please enter all required fields *');
+    } else if (password != password2) {
+      alert('Please ensure that your confirmed password is correct ');
+    } else {
+      navigation.navigate("LoginStack");
+    }
   }
 
   return (
@@ -42,7 +49,7 @@ export default function signupPatient({ navigation, route }) {
               <RadioButton.Android
                 value="clinic"
                 status={ userType === 'clinic' ? 'checked' : 'unchecked' }
-                onPress={() => setUserType('clinic')}
+                onPress={() => navigation.navigate("signupClinic")}
                 color={'#4a0f8c'}
               />
             </View>
@@ -55,7 +62,9 @@ export default function signupPatient({ navigation, route }) {
         
           
           <View style={{zIndex: 100}}>
-            <Text style={styles.label}>Email Address</Text>
+            <Text style={styles.label}>Email Address
+              <Text style={{color: "red"}}> * </Text> 
+            </Text>
             <TextInput
               returnKeyType="next"
               value={email}
@@ -70,7 +79,9 @@ export default function signupPatient({ navigation, route }) {
           </View>
 
           <View style={{zIndex: 100}}>
-            <Text style={styles.label}>Password</Text>
+            <Text style={styles.label}>Password
+              <Text style={{color: "red"}}> * </Text> 
+            </Text>
             <TextInput
               returnKeyType="next"
               value={password}
@@ -82,7 +93,9 @@ export default function signupPatient({ navigation, route }) {
           </View>
 
           <View style={{zIndex: 100}}>
-            <Text style={styles.label}>Confirm Password</Text>
+            <Text style={styles.label}>Confirm Password
+              <Text style={{color: "red"}}> * </Text> 
+            </Text>
             <TextInput
               returnKeyType="next"
               value={password2}
@@ -94,15 +107,29 @@ export default function signupPatient({ navigation, route }) {
           </View>
 
           <View style={{zIndex: 100}}>
-            <Text style={styles.label}>Contact Number</Text>
+            <Text style={styles.label}>Contact Number
+              <Text style={{color: "red"}}> * </Text> 
+            </Text>
             <TextInput
               returnKeyType="next"
               value={contactNum}
               onChangeText={(text) => setContactNum(text)}
               placeholder="Enter your Contact Number"
-              style={styles.textinput}
+              style={[styles.textinput, { width: 200, }]}
               keyboardType={'phone-pad'}
               maxLength = {8}
+            />
+          </View>
+
+          <View style={{zIndex: 100}}>
+            <Text style={styles.label}>Allergies (if any)</Text>
+            <TextInput
+              returnKeyType="done"
+              value={allergies}
+              onChangeText={(text) => setAllergies([text])}
+              placeholder="Enter Existing Allergies (if any)"
+              style={[styles.textinput, { height: 100, }]}
+              multiline={true}
             />
           </View>
 
@@ -112,7 +139,7 @@ export default function signupPatient({ navigation, route }) {
 
           <Text> Already have an account? </Text>
           <TouchableOpacity onPress={() => login() } >
-            <Text style={{textDecorationLine: 'underline'}}>Log in here!</Text>
+            <Text style={{textDecorationLine: 'underline'}}>Log In here!</Text>
           </TouchableOpacity>
 
         </View>
