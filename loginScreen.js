@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, Image, Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 
 export default function loginScreen({ navigation, route }) {
@@ -34,9 +34,17 @@ export default function loginScreen({ navigation, route }) {
     <View style={styles.container}>
 
       <TouchableWithoutFeedback onPressOut={Keyboard.dismiss} accessible={false}>
+
         <View style={styles.formStyle}>
 
-          <View style={{flexDirection:"row",alignItems:'center', marginBottom: 30}}>
+          <View>
+            <Image
+              style={styles.tinyLogo}
+              source={require('./assets/logo.png')}
+            />
+          </View>
+
+          <View style={{flexDirection:"row",alignItems:'center', marginBottom: 20, marginLeft: 20,}}>
             <View style={{flex:1}}>
               <RadioButton.Android
                 value="patient"
@@ -65,7 +73,7 @@ export default function loginScreen({ navigation, route }) {
         
         
           
-          <View style={{zIndex: 100}}>
+          <View>
             <Text style={styles.label}>Email Address</Text>
             <TextInput
               label="Email"
@@ -81,7 +89,7 @@ export default function loginScreen({ navigation, route }) {
             />
           </View>
 
-          <View style={{zIndex: 100}}>
+          <View>
             <Text style={styles.label}>Password</Text>
             <TextInput
               label="Password"
@@ -98,9 +106,9 @@ export default function loginScreen({ navigation, route }) {
             <Text style={{color: "white", fontWeight:"bold"}}>Log in</Text>
           </TouchableOpacity>
 
-          <Text> Do not have an account? </Text>
+          <Text style={{ marginTop: 30,}}> Do not have an account? </Text>
           <TouchableOpacity onPress={() => signup() } >
-            <Text style={{textDecorationLine: 'underline'}}>Create account here!</Text>
+            <Text style={{textDecorationLine: 'underline', marginBottom: 60,}}>Sign Up here!</Text>
           </TouchableOpacity>
 
         </View>
@@ -117,20 +125,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  formStyle:{
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 30,
+    paddingVertical: 50,
+    height: "100%",
+  },
+  tinyLogo: {
+    width: 100,
+    height: 100,
+    resizeMode: "contain",
+    marginBottom: 30,
+  },
   label: {
     marginBottom: 10,
   },
   textinput: {
     height: 40,
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 50,
     width: 300,
     padding: 12,
     paddingTop: 14,
-    marginBottom: 30,
+    marginBottom: 20,
   },
   logInButton: {
     padding: 10,
+    marginTop: 10,
     marginBottom: 20,
     borderRadius: 50,
     alignItems: "center",
